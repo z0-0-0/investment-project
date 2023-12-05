@@ -1,4 +1,4 @@
-package com.example.invesmentproject.views
+package com.example.invesmentproject.view
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Arrangement

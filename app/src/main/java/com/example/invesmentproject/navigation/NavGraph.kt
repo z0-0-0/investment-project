@@ -5,8 +5,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 
-import com.example.invesmentproject.views.HomeScreen
-import com.example.invesmentproject.views.LoginScreen
+import com.example.invesmentproject.view.HomeScreen
+import com.example.invesmentproject.view.LoginScreen
 
 @Composable
     fun NavGraph(navController: NavHostController) {
