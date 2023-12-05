@@ -5,8 +5,11 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 
+// Screens import
 import com.example.invesmentproject.view.HomeScreen
 import com.example.invesmentproject.view.LoginScreen
+import com.example.invesmentproject.view.OnboardingScreen
+import com.example.invesmentproject.view.SettingsScreen
 
 @Composable
     fun NavGraph(navController: NavHostController) {
@@ -20,6 +23,12 @@ import com.example.invesmentproject.view.LoginScreen
             }
             composable(route = Screens.Home.route) {
                 HomeScreen(navController)
+            }
+            composable(route = Screens.Settings.route){
+                SettingsScreen(navController)
+            }
+            composable(route = Screens.Onboarding.route){
+                OnboardingScreen(navController)
             }
         }
     }
