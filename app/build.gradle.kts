@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+
 }
 
 android {
@@ -48,7 +49,7 @@ android {
         }
     }
 }
-
+val ktorVersion = "1.6.8"
 dependencies {
 
     implementation("androidx.core:core-ktx:1.12.0")
@@ -62,6 +63,17 @@ dependencies {
     implementation("androidx.navigation:navigation-runtime-ktx:2.7.5")
     implementation("androidx.navigation:navigation-compose:2.7.5")
     implementation("androidx.compose.material3:material3:1.1.2")
+    implementation("ru.tinkoff.piapi:java-sdk-core:1.5")
+    implementation("io.ktor:ktor-html-builder:$ktorVersion")
+    implementation("io.ktor:ktor-serialization:$ktorVersion")
+    implementation("io.ktor:ktor-auth:$ktorVersion")
+    implementation("io.ktor:ktor-auth-jwt:$ktorVersion")
+    implementation("io.ktor:ktor-server-netty:$ktorVersion")
+    //implementation("com.github.nielsfalk:ktor-swagger:v0.7.0")
+    implementation("com.github.ajalt:clikt:2.8.0")
+    implementation("io.ktor:ktor-gson:$ktorVersion")
+    implementation("org.jetbrains.kotlinx:kotlinx-html-jvm:0.9.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
