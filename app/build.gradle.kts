@@ -5,6 +5,7 @@ plugins {
     id ("kotlin-kapt")
 }
 
+
 android {
     namespace = "com.example.invesmentproject"
     compileSdk = 34
@@ -21,6 +22,11 @@ android {
             useSupportLibrary = true
         }
     }
+    configurations.all {
+        resolutionStrategy.dependencySubstitution {
+            substitute(module("org.hamcrest:hamcrest-core:1.1")).using(module("junit:junit:4.13.2"))
+        }
+    }
 
     buildTypes {
         release {
@@ -35,9 +41,11 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
     buildFeatures {
         compose = true
     }
@@ -46,10 +54,18 @@ android {
     }
     packaging {
         resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+            excludes += "/META-INF/*"
+        }
+    }
+    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KaptGenerateStubs> {
+        kotlinOptions {
+            jvmTarget = "1.8"
         }
     }
 }
+
+
+
 val ktorVersion = "1.6.8"
 dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2")
