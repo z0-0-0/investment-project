@@ -5,14 +5,14 @@ import android.util.Log
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
-class InvestmentApp : Application(){
+class InvestmentApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
         Log.d(TAG, "Inside_onCreate")
     }
 
-    companion object{
+    companion object {
         const val TAG = "InvestmentApp"
     }
 }

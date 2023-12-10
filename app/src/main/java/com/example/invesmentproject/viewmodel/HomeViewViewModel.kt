@@ -6,14 +6,14 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewViewModel @Inject constructor(): ViewModel() {
+class HomeViewViewModel @Inject constructor() : ViewModel() {
 
 
     init {
-        Log.d(TAG,"init of block HomeViewViewModel")
+        Log.d(TAG, "init of block HomeViewViewModel")
     }
 
-    companion object{
+    companion object {
         const val TAG = "HomeViewViewModel"
     }
 }

@@ -4,17 +4,17 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class OnbordingViewViewModel @Inject constructor(): ViewModel(){
+class OnbordingViewViewModel @Inject constructor() : ViewModel() {
 
 
 
 
 
     init {
-        Log.d(TAG,"init of block OnboardingViewViewModel")
+        Log.d(TAG, "init of block OnboardingViewViewModel")
     }
 
-    companion object{
+    companion object {
         const val TAG = "OnboardingViewViewModel"
     }
 }

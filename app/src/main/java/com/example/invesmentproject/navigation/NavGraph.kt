@@ -12,23 +12,23 @@ import com.example.invesmentproject.view.OnboardingScreen
 import com.example.invesmentproject.view.SettingsScreen
 
 @Composable
-    fun NavGraph(navController: NavHostController) {
-        NavHost(
-            navController = navController,
-            startDestination = Screens.Home.route
-        )
-        {
-            composable(route = Screens.Login.route) {
-                LoginScreen(navController)
-            }
-            composable(route = Screens.Home.route) {
-                HomeScreen(navController)
-            }
-            composable(route = Screens.Settings.route){
-                SettingsScreen(navController)
-            }
-            composable(route = Screens.Onboarding.route){
-                OnboardingScreen(navController)
-            }
+fun NavGraph(navController: NavHostController) {
+    NavHost(
+        navController = navController,
+        startDestination = Screens.Home.route
+    )
+    {
+        composable(route = Screens.Login.route) {
+            LoginScreen(navController)
+        }
+        composable(route = Screens.Home.route) {
+            HomeScreen(navController)
+        }
+        composable(route = Screens.Settings.route) {
+            SettingsScreen(navController)
+        }
+        composable(route = Screens.Onboarding.route) {
+            OnboardingScreen(navController)
         }
     }
+}

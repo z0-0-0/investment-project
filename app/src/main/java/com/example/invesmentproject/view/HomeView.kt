@@ -8,8 +8,10 @@ import com.example.invesmentproject.viewmodel.HomeViewViewModel
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun HomeScreen(navController: NavController,
-               viewModel: HomeViewViewModel = hiltViewModel()) {
+fun HomeScreen(
+    navController: NavController,
+    viewModel: HomeViewViewModel = hiltViewModel()
+) {
 
 
 }

@@ -6,7 +6,9 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 
 @Composable
-fun OnboardingScreen(navController: NavController,
-                     viewModel: OnbordingViewViewModel = hiltViewModel()) {
+fun OnboardingScreen(
+    navController: NavController,
+    viewModel: OnbordingViewViewModel = hiltViewModel()
+) {
 
 }
