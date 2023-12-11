@@ -7,7 +7,7 @@ import androidx.navigation.NavController
 import com.example.invesmentproject.viewmodel.SettingsViewViewModel
 
 @Composable
-fun SettingsScreen(navController: NavController,
+fun SettingsView(navController: NavController,
                    viewModel:SettingsViewViewModel = hiltViewModel()
 ) {
     Text("Settings")

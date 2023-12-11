@@ -7,7 +7,7 @@ import androidx.navigation.NavController
 import com.example.invesmentproject.viewmodel.LoginViewViewModel
 
 @Composable
-fun LoginScreen(
+fun LoginView(
     navController: NavController,
     viewModel: LoginViewViewModel = hiltViewModel()
 ) {
