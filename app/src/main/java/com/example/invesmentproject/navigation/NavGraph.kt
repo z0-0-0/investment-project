@@ -1,34 +1,33 @@
 package com.example.invesmentproject.navigation
 
+// Screens import
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-
-// Screens import
-import com.example.invesmentproject.view.HomeScreen
-import com.example.invesmentproject.view.LoginScreen
-import com.example.invesmentproject.view.OnboardingScreen
-import com.example.invesmentproject.view.SettingsScreen
+import com.example.invesmentproject.view.HomeView
+import com.example.invesmentproject.view.LoginView
+import com.example.invesmentproject.view.OnboardingView
+import com.example.invesmentproject.view.SettingsView
 
 @Composable
-fun NavGraph(navController: NavHostController) {
+fun NavGraph(navController: NavHostController, startDestination: String) {
     NavHost(
         navController = navController,
-        startDestination = Screens.Onboarding.route
+        startDestination = startDestination
     )
     {
         composable(route = Screens.Login.route) {
-            LoginScreen(navController)
+            LoginView(navController)
         }
         composable(route = Screens.Home.route) {
-            HomeScreen(navController)
+            HomeView(navController)
         }
         composable(route = Screens.Settings.route) {
-            SettingsScreen(navController)
+            SettingsView(navController)
         }
         composable(route = Screens.Onboarding.route) {
-            OnboardingScreen(navController)
+            OnboardingView(navController)
         }
     }
 }

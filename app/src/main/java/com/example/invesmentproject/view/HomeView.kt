@@ -6,7 +6,7 @@ import androidx.navigation.NavController
 import com.example.invesmentproject.viewmodel.HomeViewViewModel
 
 @Composable
-fun HomeScreen(
+fun HomeView(
     navController: NavController,
     viewModel: HomeViewViewModel = hiltViewModel()
 ) {

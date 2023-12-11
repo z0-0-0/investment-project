@@ -8,9 +8,6 @@ import javax.inject.Inject
 
 @HiltViewModel
 class OnboardingViewViewModel @Inject constructor() : ViewModel() {
-//    var uiState by mutableStateOf(OnboardingUiState())
-//    private set
-
 
 
     init {
