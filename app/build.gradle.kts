@@ -52,6 +52,9 @@ android {
 }
 val ktorVersion = "1.6.8"
 dependencies {
+    val hikariVersion: String by project
+    val postgresqlVersion: String by project
+    val exposedVersion: String by project
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2")
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
@@ -70,6 +73,14 @@ dependencies {
     implementation("io.ktor:ktor-auth:$ktorVersion")
     implementation("io.ktor:ktor-auth-jwt:$ktorVersion")
     implementation("io.ktor:ktor-server-netty:$ktorVersion")
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.google.code.gson:gson:2.9.1")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.9.1")
+    implementation("org.conscrypt:conscrypt-android:2.5.1")
+
+    //Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
     //implementation("com.github.nielsfalk:ktor-swagger:v0.7.0")
     implementation("com.github.ajalt:clikt:2.8.0")
     implementation("io.ktor:ktor-gson:$ktorVersion")
@@ -85,6 +96,13 @@ dependencies {
     implementation ("com.google.dagger:hilt-android:2.48")
     kapt ("com.google.dagger:hilt-compiler:2.44")
     implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
+    implementation("com.zaxxer:HikariCP:$hikariVersion") // JDBC Connection Pool
+    implementation("org.postgresql:postgresql:$postgresqlVersion") // JDBC Connector for PostgreSQL
+
+    implementation("org.jetbrains.exposed:exposed-core:$exposedVersion")
+    implementation("org.jetbrains.exposed:exposed-dao:$exposedVersion")
+    implementation("org.jetbrains.exposed:exposed-jdbc:$exposedVersion")
+    implementation("org.jetbrains.exposed:exposed-java-time:$exposedVersion")
 }
 
 kapt {
