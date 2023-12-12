@@ -15,7 +15,7 @@ import com.example.invesmentproject.view.SettingsScreen
 fun NavGraph(navController: NavHostController) {
     NavHost(
         navController = navController,
-        startDestination = Screens.Home.route
+        startDestination = Screens.Onboarding.route
     )
     {
         composable(route = Screens.Login.route) {
