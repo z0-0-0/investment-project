@@ -8,7 +8,7 @@ import com.example.invesmentproject.viewmodel.SettingsViewViewModel
 
 @Composable
 fun SettingsView(navController: NavController,
-                   viewModel:SettingsViewViewModel = hiltViewModel()
+                 viewModel:SettingsViewViewModel = hiltViewModel()
 ) {
     Text("Settings")
 }

@@ -11,7 +11,7 @@ import com.example.invesmentproject.view.OnboardingView
 import com.example.invesmentproject.view.SettingsView
 
 @Composable
-fun NavGraph(navController: NavHostController, startDestination: String) {
+fun navGraph(navController: NavHostController, startDestination: String) {
     NavHost(
         navController = navController,
         startDestination = startDestination
