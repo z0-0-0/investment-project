@@ -8,6 +8,7 @@ import androidx.navigation.compose.composable
 import com.example.invesmentproject.view.HomeView
 import com.example.invesmentproject.view.LoginView
 import com.example.invesmentproject.view.OnboardingView
+import com.example.invesmentproject.view.ProfileView
 import com.example.invesmentproject.view.SettingsView
 
 @Composable
@@ -28,6 +29,9 @@ fun navGraph(navController: NavHostController, startDestination: String) {
         }
         composable(route = Screens.Onboarding.route) {
             OnboardingView(navController)
+        }
+        composable(route = Screens.Profile.route) {
+            ProfileView(navController)
         }
     }
 }

@@ -17,7 +17,7 @@ val PREFS_FILENAME = "com.example.invesmentproject.prefs"
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-    private var startDestination: String = Screens.Login.route
+    private var startDestination: String = Screens.Home.route
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val prefs = this.getSharedPreferences(PREFS_FILENAME, MODE_PRIVATE)

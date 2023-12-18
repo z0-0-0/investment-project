@@ -3,13 +3,14 @@ package com.example.invesmentproject.view
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
-import com.example.invesmentproject.viewmodel.SettingsViewViewModel
+
 
 @Composable
-fun SettingsView(
+fun ProfileView(
     navController: NavController,
-    viewModel: SettingsViewViewModel = hiltViewModel()
+    viewModel: ViewModel = hiltViewModel()
 ) {
-    Text("Settings")
+    Text("Profile")
 }
