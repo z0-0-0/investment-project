@@ -1,10 +1,12 @@
 package com.example.invesmentproject.viewmodel.repository
 
-/* interface StockRepository  {
+import com.example.invesmentproject.model.repository.Portfolio
+import com.example.invesmentproject.utils.Resource
+import kotlinx.coroutines.flow.Flow
 
-    suspend fun getCompanyListings(
+interface StockRepository {
 
-    ): Flow<Resource<List</* TODO */>>>
+    suspend fun getPortfolio(
+        fetchFromRemote: Boolean
+    ): Flow<Resource<Portfolio>>
 }
-
- */
