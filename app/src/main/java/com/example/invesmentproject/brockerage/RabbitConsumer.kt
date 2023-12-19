@@ -6,6 +6,12 @@ import com.rabbitmq.client.Connection
 import com.rabbitmq.client.Consumer
 import com.rabbitmq.client.Envelope
 import com.rabbitmq.client.ShutdownSignalException
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.CoroutineName
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -15,9 +21,10 @@ private val QUEUE_NAME = "portfolio.answer"
 class RabbitConsumer @Inject constructor(
     rabbitClient: RabbitClient
 ) {
-    val connection: Connection = rabbitClient.factory.newConnection("android.connection.consume")
-    val channel: Channel = connection.createChannel()
-
+    private val connection: Connection =
+        rabbitClient.factory.newConnection("android.connection.consume")
+    private val channel: Channel = connection.createChannel()
+    val dispatcher: CoroutineDispatcher = Dispatchers.Default
     fun consumeCreate() {
         val autoAck = false
         channel.basicConsume(QUEUE_NAME, autoAck, object : Consumer {
@@ -58,4 +65,13 @@ class RabbitConsumer @Inject constructor(
 
         })
     }
+
+    init {
+        consumeCreate()
+        val scope: CoroutineScope =
+            CoroutineScope(Job() + dispatcher + CoroutineName("getPortfolio"))
+        scope.launch {
+        }
+    }
+
 }

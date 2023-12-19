@@ -2,9 +2,14 @@
 
 package com.example.invesmentproject.view
 
+import android.annotation.SuppressLint
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -17,20 +22,41 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.example.invesmentproject.model.repository.PortfolioPosition
 import com.example.invesmentproject.ui.theme.InvesmentAppTheme
 import com.example.invesmentproject.viewmodel.BottomNavItemsList
 import com.example.invesmentproject.viewmodel.HomeViewViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.job
+import kotlinx.coroutines.launch
 
 
+@SuppressLint("CoroutineCreationDuringComposition")
 @Composable
 fun HomeView(
     navController: NavController,
     viewModel: HomeViewViewModel = hiltViewModel()
 ) {
     val state = viewModel.state
-
+    lateinit var positionsList: MutableList<PortfolioPosition>
+    var portfolioValue = 0
+    val scope =
+        CoroutineScope(Job(viewModel.viewModelScope.coroutineContext.job) + Dispatchers.Default)
+    scope.launch {
+        viewModel.portfolioList.collect { position ->
+            positionsList.addAll(position)
+        }
+        scope.launch {
+            viewModel.portfolioValue.collect { value ->
+                portfolioValue = value!!
+            }
+        }
+    }
     InvesmentAppTheme {
         Scaffold(
             topBar = { HomeTopBar() },
@@ -38,7 +64,7 @@ fun HomeView(
             modifier = Modifier
         )
         { innerPadding ->
-            HomeItems(innerPadding)
+            HomeItems(innerPadding, portfolioValue, positionsList)
         }
     }
 
@@ -75,7 +101,25 @@ fun HomeNavigationBar(navController: NavController) {
 }
 
 @Composable
-fun HomeItems(paddingValues: PaddingValues) {
+fun HomeItems(
+    paddingValues: PaddingValues,
+    portfolioValue: Int?,
+    portfolioMutableList: MutableList<PortfolioPosition>
+) {
     LazyColumn(modifier = Modifier.padding(paddingValues)) {
+        item(1) {
+            Text(portfolioValue.toString())
+            Text("PortfolioValue")
+        }
+        items(items = portfolioMutableList) { item ->
+            Row(
+                Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.Start
+            ) {
+                Text(text = item.figi!!)
+                Text(text = item.quantity.toString())
+                Text(text = item.averagePositionPrice.toString())
+            }
+        }
     }
 }
