@@ -16,12 +16,12 @@ import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.invesmentproject.ui.theme.InvesmentAppTheme
 import com.example.invesmentproject.viewmodel.LoginViewViewModel
+import kotlinx.coroutines.flow.update
 
 @Composable
 fun LoginView(
@@ -38,16 +38,15 @@ fun LoginView(
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.Center
                 ) {
-                    LoginCard()
+                    LoginCard(viewModel)
                 }
         }
 
     }
 }
 
-@Preview
 @Composable
-fun LoginCard() {
+fun LoginCard(viewModel: LoginViewViewModel) {
     InvesmentAppTheme {
         ElevatedCard(
             elevation = CardDefaults.cardElevation(
@@ -68,10 +67,13 @@ fun LoginCard() {
                 Text(
                     text = "Login Screen"
                 )
-               // Spacer(modifier = Modifier.size(20.dp))
-                TextField(value = "Login", onValueChange = {/*TODO*/})
-                TextField(value = "Password", onValueChange = {/*TODO*/})
-                Button(onClick = { /*TODO*/ }) {
+                TextField(
+                    value = viewModel.login.toString(),
+                    onValueChange = { value -> viewModel.login.update { value } })
+                TextField(
+                    value = viewModel.password.toString(),
+                    onValueChange = { value -> viewModel.password.update { value } })
+                Button(onClick = { viewModel.sendAuth() }) {
                     Text(text = "Go")
                 }
             }
